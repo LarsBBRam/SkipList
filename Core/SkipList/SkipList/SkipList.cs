@@ -1,19 +1,16 @@
-using System;
 using System.Collections;
-using System.Globalization;
-using System.Xml.Schema;
 using SkipList.Node;
 
 namespace SkipList.SkipList;
 
-public class SkipList<T>(int maxLevel = 16) : IEnumerable<T>, ICollection<T> where T : IComparable<T>
+public class SkipList<T>(int maxLevel = 16) :  ICollection<T> where T : IComparable<T>
 {
     private readonly SkipListNode<T> _header = new(default!, maxLevel);
-    private readonly SkipListNode<T> _end = new(default!, maxLevel);
+    // private readonly SkipListNode<T> _end = new(default!, maxLevel);
     private readonly int _maxLevel = maxLevel;
-    private readonly Random random = new();
+    private readonly Random _random = new();
 
-    public int Count { get; private set; } = 0;
+    public int Count { get; private set; }
 
     public bool IsReadOnly { get; private set; }
 
@@ -105,7 +102,7 @@ public class SkipList<T>(int maxLevel = 16) : IEnumerable<T>, ICollection<T> whe
     private int RandomLevel()
     {
         int level = 0;
-        while (random.NextDouble() < 0.5 && level < _maxLevel)
+        while (_random.NextDouble() < 0.5 && level < _maxLevel)
         {
             level++;
         }
