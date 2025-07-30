@@ -34,6 +34,29 @@ public class SkipListTest(ITestOutputHelper helper)
     }
 
     [Fact]
+    public void TestInsertAndDeleteShouldReturnNullThroughSearch()
+    {
+        // Given
+        SkipList<int> ints = [];
+        // When
+        ints.Delete(10);
+        // Then
+        var result = ints.Search(10);
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void TestName()
+    {
+        // Given
+
+        // When
+
+        // Then
+    }
+
+
+    [Fact]
     public void TestEnumeration()
     {
         // Given
