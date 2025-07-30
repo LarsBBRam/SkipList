@@ -121,7 +121,8 @@ public class SkipList<T>(int maxLevel = 16) : IEnumerable<T>, ICollection<T> whe
 
     public void Clear()
     {
-
+        _header.Forwards = [.. new SkipListNode<T>[_maxLevel + 1]];
+        Count = 0;
     }
 
     public bool Contains(T item)
